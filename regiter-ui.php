@@ -26,12 +26,15 @@
 
                 <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-3 mt-4">Sign up</p>
 
-                <form class="mx-1 mx-md-4">
+                <form class="mx-1 mx-md-4" method="post" action="register.php">
+                  <?php if (isset($_GET['error'])) { ?>
+     		            <p class="error"><?php echo $_GET['error']; ?></p>
+     	            <?php } ?>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" class="form-control" />
+                      <input type="text" id="form3Example1c" class="form-control" name="name"/>
                       <label class="form-label" for="form3Example1c">Your Name</label>
                     </div>
                   </div>
@@ -39,7 +42,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" class="form-control" />
+                      <input type="email" id="form3Example3c" class="form-control" name="email"/>
                       <label class="form-label" for="form3Example3c">Your Email</label>
                     </div>
                   </div>
@@ -47,7 +50,7 @@
                   <div class="d-flex flex-row align-items-center mb-2">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" />
+                      <input type="password" id="form3Example4c" class="form-control" name="password"/>
                       <label class="form-label" for="form3Example4c">Password</label>
                     </div>
                   </div>
@@ -62,9 +65,9 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" class="form-control" />
+                      <input type="password" id="form3Example4cd" class="form-control" name="repeatpassword"/>
                       <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                      <p id="length" class="text-danger"><small>does not match the password</small></p>
+                      <p id="match" class="text-danger"><small>does not match the password</small></p>
                     </div>
                   </div>
 
@@ -76,7 +79,7 @@
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">Register</button>
+                    <input type="submit" class="btn btn-primary btn-lg" value="Register">
                   </div>
 
                 </form>
@@ -102,6 +105,9 @@ var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
+var repeatPassword = document.getElementById("form3Example4cd");
+var match = document.getElementById("match");
+
 
 // When the user clicks on the password field, show the message box
 myInput.onfocus = function() {
@@ -111,6 +117,16 @@ myInput.onfocus = function() {
 // When the user clicks outside of the password field, hide the message box
 myInput.onblur = function() {
   document.getElementById("message").style.display = "none";
+}
+
+// When the user clicks on the repeat password field, show the message
+repeatPassword.onfocus = function() {
+  document.getElementById("match").style.display = "block";
+}
+
+// When the user clicks outside of the repeat password field, hide the message box
+repeatPassword.onblur = function() {
+  document.getElementById("match").style.display = "none";
 }
 
 // When the user starts to type something inside the password field
@@ -154,6 +170,17 @@ myInput.onkeyup = function() {
     length.classList.add("text-danger");
   }
 }
+
+// When the user starts to type something inside the repeat password field
+repeatPassword.onkeyup = function() {
+  if(repeatPassword.value === myInput.value){
+    document.getElementById("match").style.display = "none";
+  }else{
+    document.getElementById("match").style.display = "block";
+  }
+}
+
+
 </script>
     
 </body>
