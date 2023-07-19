@@ -34,7 +34,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" class="form-control" name="name"/>
+                      <input type="text" id="form3Example1c" class="form-control" name="name" value=""/>
                       <label class="form-label" for="form3Example1c">Your Name</label>
                     </div>
                   </div>
@@ -42,30 +42,32 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" class="form-control" name="email"/>
+                      <input type="email" id="form3Example3c" class="form-control" name="email" value=""/>
                       <label class="form-label" for="form3Example3c">Your Email</label>
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-2">
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" name="password"/>
+                      <input type="password" id="form3Example4c" class="form-control" name="password" value=""/>
                       <label class="form-label" for="form3Example4c">Password</label>
                     </div>
                   </div>
 
                   <div id="message">
-                    <p id="letter" class="text-danger"><small>A lowercase letter</small></p>
-                    <p id="capital" class="text-danger"><small>A capital (uppercase) letter</small></p>
-                    <p id="number" class="text-danger"><small>A number</small></p>
-                    <p id="length" class="text-danger"><small>Minimum 8 characters</small></p>
+                    <ul>
+                      <li id="letter" class="text-danger"><p><small>A lowercase letter</small></p></li>
+                      <li id="capital" class="text-danger"><p><small>A capital (uppercase) letter</small></p></li>
+                      <li id="number" class="text-danger"><p><small>A number</small></p></li>
+                      <li id="length" class="text-danger"><p><small>Minimum 8 characters</small></p></li>
+                    </ul>                    
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" class="form-control" name="repeatpassword"/>
+                      <input type="password" id="form3Example4cd" class="form-control" name="repeatpassword" value=""/>
                       <label class="form-label" for="form3Example4cd">Repeat your password</label>
                       <p id="match" class="text-danger"><small>does not match the password</small></p>
                     </div>
