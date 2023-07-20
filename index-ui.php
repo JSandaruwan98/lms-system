@@ -27,7 +27,7 @@
     <div id="mySidebar" class="sidebar">
         <div class="list-group list-group-flush mx-3 mt-4">
           <li>
-            <a href="/" class="list-group-item list-group-item-action py-4 ripple d-flex" aria-current="true">
+            <a href="/student" class="list-group-item list-group-item-action py-4 ripple d-flex" aria-current="true">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
             </a>
           </li>
@@ -37,7 +37,7 @@
             </a>
           </li>
           <li>
-            <a href="/courses" class="list-group-item list-group-item-action py-4 ripple d-flex ">
+            <a href="#" class="list-group-item list-group-item-action py-4 ripple d-flex ">
                 <i class='fas fa-graduation-cap fa-fw me-3'></i><span>Course1</span>
             </a>
           </li>
@@ -64,7 +64,7 @@
     <!-- show the all contents  on this division -->
     <div id="main">
 
-        <div id="content"></div>
+        <?php include 'index.php';?>       
     
     </div>
 
@@ -91,6 +91,4 @@
 </script>
       
 </body>
-<script src="/js/router.js"></script>
-
 </html>

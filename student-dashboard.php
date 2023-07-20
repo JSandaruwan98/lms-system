@@ -42,38 +42,18 @@
                             </div>
                         </div>
                         <div class="recently p-4">
-                            <a href="/course" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <!-- course get into the student-dashboard -->
+                            <?php include 'db-conn.php'; $result = $conn->query("SELECT * FROM courses") or die($conn->$query);?>
+                            <?php while($row=$result->fetch_assoc()):?>
+                            <a href="/courses" style="text-decoration:none;" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 text-secondary">
                                 <div class="card">
                                     <img src="images/images (1).jpeg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Semester1</h5>
+                                        <h5 class="card-title"><?= $row['id'].' - '.$row['name']?></h5>
                                     </div>
                                 </div>
                             </a>
-                            <a href="/course" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Semester1</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/course" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Semester1</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/course" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Semester1</h5>
-                                    </div>
-                                </div>
-                            </a>
+                            <?php endwhile; ?>
                         </div>
                     </div>
                 </div>
@@ -201,5 +181,5 @@
         });
     </script>
 </body>
-
+<script src="/js/router.js"></script>
 </html>

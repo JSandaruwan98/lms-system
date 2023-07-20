@@ -20,7 +20,7 @@
     <div class="border m-5">
        <div class="row m-5">
             <h1 class="fs-normal text-secondary">Course Code - Course Name</h1>
-            <div class="d-inline"><a href="/student">Dashboard</a><span> / </span><a href="/home">Home</a><span> / Course Code</span></div> 
+            <div class="d-inline"><a href="/">Dashboard</a><span> / </span><a href="/home">Home</a><span> / Course Code</span></div> 
        </div>
     </div>
     
