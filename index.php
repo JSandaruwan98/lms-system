@@ -37,7 +37,7 @@
             </a>
           </li>
           <li>
-            <a href="/courses" class="list-group-item list-group-item-action py-4 ripple d-flex ">
+            <a href="/course" class="list-group-item list-group-item-action py-4 ripple d-flex ">
                 <i class='fas fa-graduation-cap fa-fw me-3'></i><span>Course1</span>
             </a>
           </li>
@@ -64,7 +64,25 @@
     <!-- show the all contents  on this division -->
     <div id="main">
 
-        <div id="content"></div>
+    <?php 
+
+$request = $_SERVER["REQUEST_URI"];
+
+switch($request){
+    case "/home":
+        require 'home.php';
+        break;
+    case '/student':
+        require 'student-dashboard.php';
+        break;
+    case '/course':
+        require 'course.php';
+        break;
+    default:
+        require 'student-dashboard.php';
+        break;    
+}
+?>
     
     </div>
 
@@ -91,6 +109,6 @@
 </script>
       
 </body>
-<script src="/js/router.js"></script>
+
 
 </html>

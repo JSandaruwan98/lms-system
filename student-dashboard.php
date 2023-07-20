@@ -45,7 +45,7 @@
                             <!-- course get into the student-dashboard -->
                             <?php include 'db-conn.php'; $result = $conn->query("SELECT * FROM courses") or die($conn->$query);?>
                             <?php while($row=$result->fetch_assoc()):?>
-                            <a href="/courses" style="text-decoration:none;" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 text-secondary">
+                            <a href="/course" style="text-decoration:none;" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 text-secondary">
                                 <div class="card">
                                     <img src="images/images (1).jpeg" class="card-img-top" alt="...">
                                     <div class="card-body">
