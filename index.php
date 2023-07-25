@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,56 +19,81 @@
 </head>
 <body>
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-white fixed-top" style="position: fixed;">
-        <div class="navbar-brand" href="#">
-            <a href="javascript:void(0);" onclick="openNav()" class="link-dark"><i class="fas fa-bars fa-lg fa-fw me-4"></i></a><a href="" class="link-dark fs-10"><span>LMS</span></a>
+        <div class="col-2 ">
+            <div class="navbar-brand"  href="#">
+                <a href="javascript:void(0);" onclick="openNav()" class="link-dark"><i class="fas fa-bars fa-lg fa-fw me-4"></i></a><a href="index.php" style="text-decoration: none;" class="link-dark fs-10">LMS</a>
             </div>
         </div>
+        <div class="col-10"></div>
+        
     </nav>
     <ul style="list-style-type: none;">
     <div id="mySidebar" class="sidebar">
-        <div class="list-group list-group-flush mx-3 mt-4">
+        <div class="list-group list-group-flush mx-3 mt-4 ">
           <li>
-            <a href="/" class="list-group-item list-group-item-action py-4 ripple d-flex" aria-current="true">
+            <a href="index.php?page=student" class="list-group-item list-group-item-action py-4 ripple d-flex" aria-current="true">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
             </a>
           </li>
           <li>
-            <a href="/home" class="list-group-item list-group-item-action py-4 d-flex">
+            <a href="index.php?page=home" class="list-group-item list-group-item-action py-4 d-flex">
                 <i class="fas fa-home fa-fw me-3"></i><span>Home</span>
             </a>
           </li>
-          <li>
-            <a href="/courses" class="list-group-item list-group-item-action py-4 ripple d-flex ">
-                <i class='fas fa-graduation-cap fa-fw me-3'></i><span>Course1</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="list-group-item list-group-item-action py-4 ripple d-flex ">
-                <i class='fas fa-graduation-cap fa-fw me-3'></i><span>Course1</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="list-group-item list-group-item-action py-4 ripple d-flex ">
-                <i class='fas fa-graduation-cap fa-fw me-3'></i><span>Course1</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="list-group-item list-group-item-action py-4 ripple d-flex ">
-                <i class='fas fa-graduation-cap fa-fw me-3'></i><span>Course1</span>
-            </a>
-          </li>
+          <?php include 'db-conn.php'; $result = $conn->query("SELECT * FROM courses") or die($conn->$query);?>
+          <?php while($row=$result->fetch_assoc()):?>
+            <li>
+                <a href="index.php?page=course&id=<?=$row['course_id']?>&name=<?=$row['name']?>" class="list-group-item list-group-item-action py-4 ripple d-flex ">
+                    <i class='fas fa-graduation-cap fa-fw me-3'></i><span><?=$row['course_id']?></span>
+                </a>
+            </li>
+          <?php endwhile; ?>
+          
         </div>
     
     </div>
     </ul>
 
+    
+
     <!-- show the all contents  on this division -->
     <div id="main">
 
-        <div id="content"></div>
+    <?php
+        // Check if 'page' parameter is set in the URL
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+
+            // Data to be passed to content pages
+            $data = "Hello, this is some data passed from the main page.";
+
+            // Map the 'page' parameter to the appropriate file
+            switch ($page) {
+                case 'student':
+                    include('student-dashboard.php');
+                    break;
+                case 'home':
+                    include('home.php');
+                    break;
+                case 'course':
+                    include('course.php');
+                    break;
+                case 'enroll':
+                    include('course_enroll.php');
+                    break;    
+                default:
+                    echo 'Page not found';
+                    break;
+            }
+        } else {
+            // Default to home page if no 'page' parameter is set
+            include('student-dashboard.php');
+        }
+        ?>
     
     </div>
-
+    
+    
 <script>
     var sidebar = document.getElementById("mySidebar");
     var main = document.getElementById("main");
@@ -75,7 +101,10 @@
         if(sidebar.style.width != "0px"){
             document.getElementById("mySidebar").style.width = "0px";
             document.getElementById("main").style.marginLeft = "0px";
-        }else{ 
+        }else if(window.matchMedia("(max-width: 667.91px)").matches){
+            document.getElementById("mySidebar").style.width = "250px";
+        }    
+        else{ 
             document.getElementById("mySidebar").style.width = "250px";
             document.getElementById("main").style.marginLeft= "250px";
         }
@@ -91,6 +120,6 @@
 </script>
       
 </body>
-<script src="/js/router.js"></script>
+
 
 </html>

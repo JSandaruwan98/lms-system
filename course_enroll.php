@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,48 +20,27 @@
 <?php
 if (isset($_GET['id'])) {
     $id = urldecode($_GET['id']);
-    $name = urldecode($_GET['name']);
-    $date = date('Y-m-d H:i:s');
-    include 'db-conn.php'; $result = $conn->query("UPDATE courses SET access_time= '$date' WHERE course_id = '$id'") or die($conn->$query);
-   
+    $name = urldecode($_GET['name']);   
 }
 ?>
     <div class="border m-5">
        <div class="row m-5">
             <h1 class="fs-normal text-secondary"><?=$id?> - <?=$name?></h1>
-            <div class="d-inline"><a href="/">Dashboard</a><span> / </span><a href="index.php?page=home">Home</a><span> / Course Code</span></div> 
+            <div class="d-inline"><a href="/">Dashboard</a><span> / </span><a href="index.php?page=home">Home</a><span> / <?=$id?></span></div> 
        </div>
     </div>
     
-    <div class="border m-5">
-        <div class="row m-5">
-            <div class="d-flex"><h1 class="h4 fs-normal text-secondary me-2">Announcement</h1><i class='far fa-comment-alt fs-normal text-secondary' style="font-size: 20px;"></i></div>
-        </div>
-        <hr class="mx-5">
-        <div class="row m-5">
-            <h1 class="h3 fs-normal text-secondary">Topic 1</h1>
-            <ul class="p-5" style="list-style-type: none;">
-                <li>...</li>
-                <li>...</li>
-            </ul>
-        </div>  
-        <hr class="mx-5">
-        <div class="row m-5">
-            <h1 class="h3 fs-normal text-secondary">Topic 2</h1>
-            <ul class="p-5" style="list-style-type: none;">
-                <li>...</li>
-                <li>...</li>
-            </ul>
-        </div>    
-        <hr class="mx-5">
-        <div class="row m-5">
-            <h1 class="h3 fs-normal text-secondary">Topic 3</h1>
-            <ul class="p-5" style="list-style-type: none;">
-                <li>...</li>
-                <li>...</li>
-            </ul>
-        </div>  
+    <div class="border m-5 p-5">
+          <h1 class="h2 fs-normal text-secondary">Enrolment options</h1>
+          <div class="p-5 h3 fs-normal text-secondary">
+            <i class='fas fa-volleyball-ball fa-fw me-3' style='font-size:24px'></i><span><?=$id?> - <?=$name?></span>
+            <div class="">
+              <img src="images/images (1).jpeg" class="card-img m-5" style="height: 100px; width:150px" alt="...">
+            </div>  
+            <span class="h4">Lecture - Mr. ...........</span>          
+          </div>
+          <div class="d-flex justify-content-center"><a href="#" class="btn btn-primary" style="width: 120px;">Enroll</a></div>
+            
     </div>
-  
 </body>
 </html>

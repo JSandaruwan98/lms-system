@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +28,7 @@
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
-        <div class="row">
+        <div class="row me-4">
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="row">
                     <div class="row border m-3 p-4">
@@ -43,69 +45,41 @@
                         </div>
                         <div class="recently p-4">
                             <!-- course get into the student-dashboard -->
-                            <?php include 'db-conn.php'; $result = $conn->query("SELECT * FROM courses") or die($conn->$query);?>
+                            <?php include 'db-conn.php'; $result = $conn->query("SELECT * FROM courses ORDER BY access_time DESC LIMIT 4") or die($conn->$query);?>
                             <?php while($row=$result->fetch_assoc()):?>
-                            <a href="/courses" style="text-decoration:none;" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 text-secondary">
-                                <div class="card">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?= $row['id'].' - '.$row['name']?></h5>
+                               <a href="index.php?page=course&id=<?=$row['course_id']?>&name=<?=$row['name']?>" style="text-decoration:none;" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 text-secondary">
+                                    <div class="card">
+                                        <img src="images/images (1).jpeg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $row['name']?></h5>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
                             <?php endwhile; ?>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="row border m-3 p-4">
                         <h1 class="h4 mt-4 text-secondary">Cource overview</h1>
+
                         <div class="p-4">
+                            <!-- course get into the student-dashboard -->
+                            <?php include 'db-conn.php'; $result = $conn->query("SELECT * FROM courses") or die($conn->$query);?>
+                            <?php while($row=$result->fetch_assoc()):?>
+                            <a href="index.php?page=course&id=<?=$row['course_id']?>&name=<?=$row['name']?>" style="text-decoration:none;" class=" text-secondary">    
                             <div class="col-md-6 col-sm-12 mb-4">
                                 <div class="card border-left-info shadow h-100 py-2">
                                     <img src="images/images (1).jpeg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Semester</h5>
+                                        <h5 class="card-title"><?= $row['course_id']?> - <?= $row['name']?></h5>
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Semester</h5>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Semester</h5>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Semester</h5>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <img src="images/images (1).jpeg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Semester</h5>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
+                            <?php endwhile; ?>
                         </div>
                     </div>
                 </div>
@@ -113,7 +87,7 @@
                 
            
             <div class="col-lg-4 col-md-0 col-sm-0">
-                <div class="row border m-3 p-3">
+                <div class="row border ms-4 mt-3 p-3">
                     <h1 class="h4 my-2 text-secondary">Upcomming activities</h1>
                     <div class="activities p-4" style="height: 300px;">                    
                     <div class="card mb-4" >
@@ -181,5 +155,6 @@
         });
     </script>
 </body>
+
 <script src="/js/router.js"></script>
 </html>

@@ -27,13 +27,23 @@
           <h1 class="h2 fs-normal text-secondary">Courses</h1>
           <br>
           <ul style="list-style-type:none;" class="me-4">
-            <li><a class="text-decoration-none fs-2"  href=""><div class="row border p-5"><div class="col-11">Courses Code - Courses Name</div><div class="col-1 d-flex justify-content-end"><input class="form-check-input" type="checkbox" checked></div></div></a></li>
-            <li><a class="text-decoration-none fs-2"  href=""><div class="row border p-5"><div class="col-11">Courses Code - Courses Name</div><div class="col-1 d-flex justify-content-end"><input class="form-check-input" type="checkbox"></div></div></a></li>
-            <li><a class="text-decoration-none fs-2"  href=""><div class="row border p-5"><div class="col-11">Courses Code - Courses Name</div><div class="col-1 d-flex justify-content-end"><input class="form-check-input" type="checkbox"></div></div></a></li>
-            <li><a class="text-decoration-none fs-2"  href=""><div class="row border p-5"><div class="col-11">Courses Code - Courses Name</div><div class="col-1 d-flex justify-content-end"><input class="form-check-input" type="checkbox"></div></div></a></li>
-            <li><a class="text-decoration-none fs-2"  href=""><div class="row border p-5"><div class="col-11">Courses Code - Courses Name</div><div class="col-1 d-flex justify-content-end"><input class="form-check-input" type="checkbox"></div></div></a></li>
-            <li><a class="text-decoration-none fs-2"  href=""><div class="row border p-5"><div class="col-11">Courses Code - Courses Name</div><div class="col-1 d-flex justify-content-end"><input class="form-check-input" type="checkbox"></div></div></a></li>
+          <?php include 'db-conn.php'; $result = $conn->query("SELECT * FROM courses") or die($conn->$query);?>
+          <?php while($row=$result->fetch_assoc()):?>
+            <div class="text-decoration-none fs-2 row border p-5">
+              <div class="col-6">
+                <a href="index.php?page=enroll&id=<?=$row['course_id']?>&name=<?=$row['name']?>"><?=$row['course_id']?> - <?=$row['name']?></a>
+              </div>
+              <div class="col-6 d-flex justify-content-end">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            
+            </div>
+            
+           
+            
+          <?php endwhile; ?>
           </ul>
+          
     </div>
 </body>
 </html>

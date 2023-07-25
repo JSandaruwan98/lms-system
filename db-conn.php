@@ -3,7 +3,7 @@
 $sname= "localhost";
 $unmae= "root";
 $password = "";
-$db_name = "lms-system";
+$db_name = "lms";
 
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 
