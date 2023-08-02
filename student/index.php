@@ -5,7 +5,7 @@ include 'db-conn.php';
 // Check if the authentication token is provided
 if (!isset($_SESSION['token'])) {
     // Redirect the user to the login page if the token is not available
-    header("Location: login.php");
+    header("Location: login-ui.php");
     exit();
 }
 
